@@ -36,10 +36,12 @@ function App() {
         <header className={`${darkMode ? "dark-header" : ""} header`}>
           <div className="logo">
             <h1 className="logo__name">
-              <Link to="/">Daze-T</Link>
+              <Link to="/">CryptoMpesa</Link>
             </h1>
 
-            <img src="img/code.png" alt="Logo Img" className="logo__img" />
+            <svg className="logo__img" style={ { height: "4.2rem", marginLeft: "1rem", fill: darkMode ? "#FFD700" : "#DAA520" } }>
+              <use xlinkHref="img/sprite.svg#bitcoin"></use>
+            </svg>
           </div>
 
           <nav className={`${displayMenu ? "display_menu" : ""}   nav`}>

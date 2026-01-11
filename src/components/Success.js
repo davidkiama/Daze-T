@@ -8,30 +8,50 @@ function Success({ darkMode }) {
   // These come from the URL constructed in the Node redirect
   const kes = searchParams.get("amount");
   const phone = searchParams.get("phone");
+  const orderId = searchParams.get("orderId") || `ORD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    const review = e.target.review.value;
+    console.log("Saving review to DB (Pseudo):", { orderId, review });
+    alert("Thank you for your review!");
+  };
 
   return (
     <main className={`${darkMode ? "dark-2" : ""} main`}>
       <section className="content">
-        <div className="contact" style={{ textAlign: "center", padding: "2rem" }}>
-          <h2 style={{ color: "#28a745" }}>🎉 Order Submitted!</h2>
+        <div className="contact" style={ { textAlign: "center", padding: "2rem" } }>
+          <h2 style={ { color: "#FFD700" } }>🎉 Order Submitted!</h2>
 
           <div
-            style={{
+            style={ {
               background: darkMode ? "#333" : "#f4f4f4",
               padding: "20px",
               borderRadius: "10px",
               margin: "20px 0",
-            }}
+              border: "1px solid #C0C0C0"
+            } }
           >
             <p>
-              <strong>Amout:</strong> {kes || "Processing..."}
+              <strong>Order ID:</strong> {orderId}
+            </p>
+            <p>
+              <strong>Amount:</strong> {kes || "Processing..."}
             </p>
             <p>
               <strong>Mpesa number:</strong> {phone || "Processing..."}
             </p>
           </div>
 
-          <p>
+          <div className="review-section" style={ { textAlign: "left", maxWidth: "600px", margin: "0 auto" } }>
+            <h4>Leave a Review</h4>
+            <form onSubmit={handleReviewSubmit}>
+              <textarea name="review" placeholder="How was your experience?" rows="3" required className={`${darkMode ? "dark" : ""}`}></textarea>
+              <button type="submit" className={`${darkMode ? "dark" : ""} btn`}>Submit Review</button>
+            </form>
+          </div>
+
+          <p style={ { marginTop: "2rem" } }>
             {!kes && !phone ? "Awaiting Blockchain confirmation..." : "Thank you for your order"}
           </p>
 
@@ -40,7 +60,7 @@ function Success({ darkMode }) {
             value="Back to Home"
             className={`${darkMode ? "dark" : ""} btn`}
             onClick={() => navigate("/")}
-            style={{ marginTop: "20px" }}
+            style={ { marginTop: "20px" } }
           />
         </div>
       </section>
