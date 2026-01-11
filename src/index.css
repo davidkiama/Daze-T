@@ -59,11 +59,12 @@ body {
 .card {
   width: 60rem;
   padding: 3rem;
+  margin: auto;
   /* padding-left: 4rem; */
   box-shadow: 1px 5px 20px -6px rgba(0, 0, 0, 0.75);
 }
 .card__heading {
-  border-bottom: 5px solid #C0C0C0;
+  border-bottom: 5px solid #c0c0c0;
 }
 .card__content {
   margin-top: 1rem;
@@ -72,6 +73,7 @@ body {
   column-gap: 1rem;
   align-items: stretch;
   margin-left: -1rem;
+  margin-bottom: 4rem;
 }
 .card__text {
   font-size: 2rem;
@@ -89,13 +91,13 @@ body {
 }
 .card a {
   text-decoration: none;
-  background-image: linear-gradient(to right, #C0C0C0, #808080);
+  background-image: linear-gradient(to right, #c0c0c0, #808080);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 .card a:hover {
-  background-image: linear-gradient(to right, #FFD700, #DAA520);
+  background-image: linear-gradient(to right, #ffd700, #daa520);
 }
 
 .con {
@@ -108,14 +110,14 @@ body {
 .con--circle {
   height: 2.5rem;
   width: 2.5rem;
-  border: 2px solid #C0C0C0;
+  border: 2px solid #c0c0c0;
   border-radius: 100px;
   margin-top: 10px;
   border-width: 3px;
 }
 .con::before {
   content: "";
-  background-color: #C0C0C0;
+  background-color: #c0c0c0;
   width: 0.12rem;
   display: block;
   height: 80%;
@@ -134,7 +136,7 @@ body {
 }
 
 .heading-3 {
-  font-size: 5rem;
+  font-size: 3.5rem;
 }
 
 .heading-4 {
@@ -209,7 +211,7 @@ body {
 }
 
 .footer__icons a:hover svg {
-  fill: #FFD700 !important;
+  fill: #ffd700 !important;
 }
 
 .footer__icon {
@@ -273,11 +275,11 @@ body {
   bottom: 0;
   width: 80%;
   margin: 0 10%;
-  border-bottom: 2px solid #C0C0C0;
+  border-bottom: 2px solid #c0c0c0;
 }
 
 .nav__item.active {
-  background-image: linear-gradient(to right, #C0C0C0, #808080);
+  background-image: linear-gradient(to right, #c0c0c0, #808080);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -339,13 +341,13 @@ body {
 }
 
 form {
-  min-height: 80vh;
+  /* min-height: 80vh; */
   display: flex;
   flex-direction: column;
 }
 
 form label {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
@@ -354,7 +356,7 @@ form textarea {
   margin-bottom: 1.5rem;
   padding: 2rem 1rem;
   width: 100%;
-  border: 2px solid #C0C0C0;
+  border: 2px solid #c0c0c0;
   background-color: #f8f8f8;
   border-right: none;
   border-bottom: none;
@@ -371,7 +373,7 @@ form .btn {
   margin-top: 2rem;
   font-size: 2rem;
   padding: 1.2rem 2.5rem;
-  background-color: #C0C0C0;
+  background-color: #c0c0c0;
   color: #000;
   font-weight: bold;
   border-radius: 5px;
@@ -380,9 +382,9 @@ form .btn {
 
 .btn:hover,
 form .btn:hover {
-  background-color: #FFD700;
+  background-color: #ffd700;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .whatsapp-link {
@@ -392,7 +394,7 @@ form .btn:hover {
   gap: 1rem;
   margin-top: 3rem;
   text-decoration: none;
-  color: #25D366;
+  color: #25d366;
   font-size: 1.8rem;
   font-weight: bold;
 }
@@ -411,7 +413,7 @@ form .btn:hover {
 }
 
 .review-section textarea {
-  border: 1px solid #C0C0C0 !important;
+  border: 1px solid #c0c0c0 !important;
   background: #fff !important;
 }
 

@@ -8,7 +8,7 @@ function Success({ darkMode }) {
   // These come from the URL constructed in the Node redirect
   const kes = searchParams.get("amount");
   const phone = searchParams.get("phone");
-  const orderId = searchParams.get("orderId") || `ORD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+  const orderId = searchParams.get("trackId");
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
@@ -20,38 +20,48 @@ function Success({ darkMode }) {
   return (
     <main className={`${darkMode ? "dark-2" : ""} main`}>
       <section className="content">
-        <div className="contact" style={ { textAlign: "center", padding: "2rem" } }>
-          <h2 style={ { color: "#C0C0C0" } }>🎉 Order Submitted!</h2>
-
-          <div
-            style={ {
-              background: darkMode ? "#333" : "#f4f4f4",
-              padding: "20px",
-              borderRadius: "10px",
-              margin: "20px 0",
-              border: "1px solid #C0C0C0"
-            } }
-          >
-            <p>
-              <strong>Order ID:</strong> {orderId}
-            </p>
-            <p>
-              <strong>Amount:</strong> {kes || "Processing..."}
-            </p>
-            <p>
-              <strong>Mpesa number:</strong> {phone || "Processing..."}
-            </p>
+        <div className="card">
+          <h4 className="heading-4 card__heading">🎉 Order Submitted!</h4>
+          <div className="card__content">
+            {/* <div className="con">
+              <span className="con--circle"> </span>
+            </div> */}
+            <div className="card__text">
+              <p>
+                <strong>Order ID:</strong> {orderId}
+              </p>
+              <p>
+                <strong>Amount:</strong> {kes || "Processing..."}
+              </p>
+              <p>
+                <strong>Mpesa number:</strong> {phone || "Processing..."}
+              </p>
+            </div>
+            {/* <div className="con">
+              <span className="con--circle"> </span>
+            </div> */}
           </div>
 
-          <div className="review-section" style={ { textAlign: "left", maxWidth: "600px", margin: "0 auto" } }>
+          <div
+            className="review-section"
+            style={{ textAlign: "left", maxWidth: "600px", margin: "0 auto" }}
+          >
             <h4>Leave a Review</h4>
             <form onSubmit={handleReviewSubmit}>
-              <textarea name="review" placeholder="How was your experience?" rows="3" required className={`${darkMode ? "dark" : ""}`}></textarea>
-              <button type="submit" className={`${darkMode ? "dark" : ""} btn`}>Submit Review</button>
+              <textarea
+                name="review"
+                placeholder="How was your experience?"
+                rows="3"
+                required
+                className={`${darkMode ? "dark" : ""}`}
+              ></textarea>
+              <button type="submit" className={`${darkMode ? "dark" : ""} btn`}>
+                Submit Review
+              </button>
             </form>
           </div>
 
-          <p style={ { marginTop: "2rem" } }>
+          <p style={{ marginTop: "2rem" }}>
             {!kes && !phone ? "Awaiting Blockchain confirmation..." : "Thank you for your order"}
           </p>
 
@@ -60,7 +70,7 @@ function Success({ darkMode }) {
             value="Back to Home"
             className={`${darkMode ? "dark" : ""} btn`}
             onClick={() => navigate("/")}
-            style={ { marginTop: "20px" } }
+            style={{ marginTop: "20px" }}
           />
         </div>
       </section>

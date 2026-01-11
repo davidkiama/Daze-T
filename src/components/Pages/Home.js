@@ -82,6 +82,7 @@ function Home({ darkMode }) {
       });
 
       const data = await response.json();
+      console.log("data", data);
 
       if (response.ok && data.payment_url) {
         // Option 1: Redirect the user immediately to OxaPay

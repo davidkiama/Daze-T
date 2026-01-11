@@ -2,23 +2,47 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="footer" style={ { padding: "2rem", backgroundColor: "#1a1a1a", borderTop: "2px solid #C0C0C0" } }>
-      <div className="footer__content" style={ { maxWidth: "1200px", margin: "0 auto", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" } }>
-        <div className="footer__icons" style={ { display: "flex", gap: "2rem", marginBottom: "1rem" } }>
+    <footer
+      className="footer"
+      style={{ padding: "2rem", backgroundColor: "#1a1a1a", borderTop: "2px solid #C0C0C0" }}
+    >
+      <div
+        className="footer__content"
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div
+          className="footer__icons"
+          style={{ display: "flex", gap: "2rem", marginBottom: "1rem" }}
+        >
           <a href="https://twitter.com/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#twitter-svgrepo-com"></use></svg>
+            <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+              <use xlinkHref="img/sprite.svg#twitter-svgrepo-com"></use>
+            </svg>
           </a>
           <a href="https://facebook.com/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#facebook-svgrepo-com"></use></svg>
+            <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+              <use xlinkHref="img/sprite.svg#facebook-svgrepo-com"></use>
+            </svg>
           </a>
           <a href="https://instagram.com/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#instagram-svgrepo-com"></use></svg>
+            <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+              <use xlinkHref="img/sprite.svg#instagram-svgrepo-com"></use>
+            </svg>
           </a>
           <a href="https://wa.me/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#whatsapp-svgrepo-com"></use></svg>
+            <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+              <use xlinkHref="img/sprite.svg#whatsapp-svgrepo-com"></use>
+            </svg>
           </a>
         </div>
-        <p className="copyright" style={ { color: "#C0C0C0", fontSize: "1.2rem" } }>
+        <p className="copyright" style={{ color: "#C0C0C0", fontSize: "1.2rem" }}>
           &copy; {new Date().getFullYear()} CryptoMpesa. All rights reserved.
         </p>
       </div>
@@ -27,3 +51,60 @@ function Footer() {
 }
 
 export default Footer;
+
+// import React from "react";
+
+// function Footer() {
+//   return (
+//     <footer className="footer">
+//       <div className="con">
+//         <span className="con--circle"> </span>
+//       </div>
+//       <div
+//         className="footer__content"
+//         style={{
+//           maxWidth: "1200px",
+//           margin: "0 auto",
+//           width: "100%",
+//           display: "flex",
+//           flexDirection: "column",
+//           alignItems: "center",
+//         }}
+//       >
+//         <div
+//           className="footer__icons"
+//           style={{ display: "flex", gap: "2rem", marginBottom: "1rem" }}
+//         >
+//           <a href="https://twitter.com/pseudo" target="_blank" rel="noopener noreferrer">
+//             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+//               <use xlinkHref="img/sprite.svg#twitter-svgrepo-com"></use>
+//             </svg>
+//           </a>
+//           <a href="https://facebook.com/pseudo" target="_blank" rel="noopener noreferrer">
+//             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+//               <use xlinkHref="img/sprite.svg#facebook-svgrepo-com"></use>
+//             </svg>
+//           </a>
+//           <a href="https://instagram.com/pseudo" target="_blank" rel="noopener noreferrer">
+//             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+//               <use xlinkHref="img/sprite.svg#instagram-svgrepo-com"></use>
+//             </svg>
+//           </a>
+//           <a href="https://wa.me/pseudo" target="_blank" rel="noopener noreferrer">
+//             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
+//               <use xlinkHref="img/sprite.svg#whatsapp-svgrepo-com"></use>
+//             </svg>
+//           </a>
+//         </div>
+//         <p className="copyright" style={{ color: "#C0C0C0", fontSize: "1.2rem" }}>
+//           &copy; {new Date().getFullYear()} CryptoMpesa. All rights reserved.
+//         </p>
+//       </div>
+//       <div className="con">
+//         <span className="con--circle"> </span>
+//       </div>
+//     </footer>
+//   );
+// }
+
+// export default Footer;
