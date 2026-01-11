@@ -6,16 +6,16 @@ function Footer() {
       <div className="footer__content" style={ { maxWidth: "1200px", margin: "0 auto", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" } }>
         <div className="footer__icons" style={ { display: "flex", gap: "2rem", marginBottom: "1rem" } }>
           <a href="https://twitter.com/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#twitter"></use></svg>
+            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#twitter-svgrepo-com"></use></svg>
           </a>
           <a href="https://facebook.com/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#facebook"></use></svg>
+            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#facebook-svgrepo-com"></use></svg>
           </a>
           <a href="https://instagram.com/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#instagram"></use></svg>
+            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#instagram-svgrepo-com"></use></svg>
           </a>
           <a href="https://wa.me/pseudo" target="_blank" rel="noopener noreferrer">
-            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#whatsapp"></use></svg>
+            <svg style={ { width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" } }><use xlinkHref="img/sprite.svg#whatsapp-svgrepo-com"></use></svg>
           </a>
         </div>
         <p className="copyright" style={ { color: "#C0C0C0", fontSize: "1.2rem" } }>

@@ -39,9 +39,7 @@ function App() {
               <Link to="/">CryptoMpesa</Link>
             </h1>
 
-            <svg className="logo__img" style={ { height: "4.2rem", marginLeft: "1rem", fill: darkMode ? "#FFD700" : "#DAA520" } }>
-              <use xlinkHref="img/sprite.svg#bitcoin"></use>
-            </svg>
+            <img src="img/bitcoin.svg" alt="Bitcoin Logo" className="logo__img" style={ { height: "4.2rem", marginLeft: "1rem" } } />
           </div>
 
           <nav className={`${displayMenu ? "display_menu" : ""}   nav`}>

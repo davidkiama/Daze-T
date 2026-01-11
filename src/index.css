@@ -196,13 +196,22 @@ body {
   align-items: stretch;
   justify-content: space-between;
 }
-.footer__icons {
-  width: 10rem;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.footer__icons a {
+  transition: transform 0.3s;
 }
+
+.footer__icons a:hover {
+  transform: scale(1.1);
+}
+
+.footer__icons svg {
+  transition: fill 0.3s;
+}
+
+.footer__icons a:hover svg {
+  fill: #FFD700 !important;
+}
+
 .footer__icon {
   height: 2rem;
   width: 2rem;
