@@ -63,7 +63,7 @@ body {
   box-shadow: 1px 5px 20px -6px rgba(0, 0, 0, 0.75);
 }
 .card__heading {
-  border-bottom: 5px solid #FFD700;
+  border-bottom: 5px solid #C0C0C0;
 }
 .card__content {
   margin-top: 1rem;
@@ -89,13 +89,13 @@ body {
 }
 .card a {
   text-decoration: none;
-  background-image: linear-gradient(to right, #FFD700, #DAA520);
+  background-image: linear-gradient(to right, #C0C0C0, #808080);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 .card a:hover {
-  background-image: linear-gradient(to right, #C0C0C0, #A9A9A9);
+  background-image: linear-gradient(to right, #FFD700, #DAA520);
 }
 
 .con {
@@ -273,11 +273,11 @@ body {
   bottom: 0;
   width: 80%;
   margin: 0 10%;
-  border-bottom: 2px solid #FFD700;
+  border-bottom: 2px solid #C0C0C0;
 }
 
 .nav__item.active {
-  background-image: linear-gradient(to right, #FFD700, #DAA520);
+  background-image: linear-gradient(to right, #C0C0C0, #808080);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -371,7 +371,7 @@ form .btn {
   margin-top: 2rem;
   font-size: 2rem;
   padding: 1.2rem 2.5rem;
-  background-color: #FFD700;
+  background-color: #C0C0C0;
   color: #000;
   font-weight: bold;
   border-radius: 5px;
@@ -380,7 +380,7 @@ form .btn {
 
 .btn:hover,
 form .btn:hover {
-  background-color: #DAA520;
+  background-color: #FFD700;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }

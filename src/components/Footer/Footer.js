@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="footer" style={ { padding: "2rem", backgroundColor: "#1a1a1a", borderTop: "2px solid #FFD700" } }>
+    <footer className="footer" style={ { padding: "2rem", backgroundColor: "#1a1a1a", borderTop: "2px solid #C0C0C0" } }>
       <div className="footer__content" style={ { maxWidth: "1200px", margin: "0 auto", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" } }>
         <div className="footer__icons" style={ { display: "flex", gap: "2rem", marginBottom: "1rem" } }>
           <a href="https://twitter.com/pseudo" target="_blank" rel="noopener noreferrer">

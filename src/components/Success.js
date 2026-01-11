@@ -21,7 +21,7 @@ function Success({ darkMode }) {
     <main className={`${darkMode ? "dark-2" : ""} main`}>
       <section className="content">
         <div className="contact" style={ { textAlign: "center", padding: "2rem" } }>
-          <h2 style={ { color: "#FFD700" } }>🎉 Order Submitted!</h2>
+          <h2 style={ { color: "#C0C0C0" } }>🎉 Order Submitted!</h2>
 
           <div
             style={ {
