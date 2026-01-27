@@ -19,8 +19,12 @@ function Contact({ darkMode }) {
           <input type="submit" value="Send" className={`${darkMode ? "dark" : ""} btn`} />
         </form>
 
-        <a href="https://wa.me/pseudo" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
-           Contact us on WhatsApp
+        <a
+          target="blank"
+          href="https://wa.me/254799760500?text=Hello support"
+          className="whatsapp-link"
+        >
+          Contact us on WhatsApp
         </a>
       </div>
     </main>

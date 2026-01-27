@@ -472,6 +472,10 @@ form .btn:hover {
   gap: 5rem;
 }
 
+.small-text {
+  font-size: 1.2rem;
+}
+
 .content-home {
   margin: 10rem auto 15rem;
   width: 100%;

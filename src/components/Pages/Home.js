@@ -73,7 +73,7 @@ function Home({ darkMode }) {
     try {
       // Point this to your Node.js server URL
       // Use "http://localhost:8080/api/create-trade" for local testing
-      const response = await fetch("http://localhost:8080/api/create-trade", {
+      const response = await fetch("https://api.daze-t.com/api/create-trade", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -125,7 +125,7 @@ function Home({ darkMode }) {
               className={`${darkMode ? "dark" : ""} ${error.includes("USD") ? "input-error" : ""}`}
             />
 
-            <label>You Pay (KES)</label>
+            <label>We Pay (KES)</label>
             <input
               type="number"
               value={kesAmount}
@@ -149,6 +149,7 @@ function Home({ darkMode }) {
               required
               className={`${darkMode ? "dark" : ""}`}
             />
+            <span className="small-text">Consider Litecoin for small payments</span>
 
             <input
               type="submit"
