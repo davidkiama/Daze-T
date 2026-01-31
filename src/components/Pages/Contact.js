@@ -21,7 +21,7 @@ function Contact({ darkMode }) {
 
         <a
           target="blank"
-          href="https://wa.me/254799760500?text=Hello support"
+          href="https://wa.me/254756861096?text=Hello support"
           className="whatsapp-link"
         >
           Contact us on WhatsApp
