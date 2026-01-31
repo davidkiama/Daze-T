@@ -26,12 +26,20 @@ function Footer() {
               <use xlinkHref="img/sprite.svg#twitter-svgrepo-com"></use>
             </svg>
           </a>
-          <a href="https://facebook.com/pseudo" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com/profile.php?id=61587418375785"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
               <use xlinkHref="img/sprite.svg#facebook-svgrepo-com"></use>
             </svg>
           </a>
-          <a href="https://instagram.com/pseudo" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/daze_t_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
               <use xlinkHref="img/sprite.svg#instagram-svgrepo-com"></use>
             </svg>
