@@ -4,34 +4,37 @@ function Home({ darkMode }) {
   const [usdAmount, setUsdAmount] = useState("");
   const [kesAmount, setKesAmount] = useState("");
   const [phone, setPhone] = useState("");
-  const [rate, setRate] = useState(0);
+  const [baseRate, setBaseRate] = useState(0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [paymentUrl, setPaymentUrl] = useState(""); // Holds the OxaPay link
+  const [paymentUrl, setPaymentUrl] = useState("");
 
-  const markup = -20;
-  const MAX_KES = 1000;
+  const MARKUP_LOW_VOLUME = -10;
+  const MARKUP_HIGH_VOLUME = -5;
+  const THRESHOLD_KES = 1000;
   const MIN_USD = 0.1;
 
-  // 1. Fetch Exchange Rate
   useEffect(() => {
     const fetchRate = async () => {
       try {
         const response = await fetch("https://open.er-api.com/v6/latest/USD");
         const data = await response.json();
-        setRate(data.rates.KES + markup);
+        setBaseRate(data.rates.KES);
       } catch (err) {
         console.error("Rate fetch failed", err);
       }
     };
     fetchRate();
-  }, [markup]);
+  }, []);
 
-  const validateAmounts = (usd, kes) => {
+  const getActiveRate = (currentKes) => {
+    const markup = parseFloat(currentKes) < THRESHOLD_KES ? MARKUP_LOW_VOLUME : MARKUP_HIGH_VOLUME;
+    return baseRate + markup;
+  };
+
+  const validateAmounts = (usd) => {
     if (usd !== "" && parseFloat(usd) < MIN_USD) {
       setError(`Minimum trade is $${MIN_USD} USD`);
-    } else if (kes !== "" && parseFloat(kes) > MAX_KES) {
-      setError(`Maximum limit is ${MAX_KES} KES`);
     } else {
       setError("");
     }
@@ -40,56 +43,60 @@ function Home({ darkMode }) {
   const handleUsdChange = (e) => {
     const val = e.target.value;
     setUsdAmount(val);
-    const convertedKes = val && rate ? (val * rate).toFixed(2) : "";
-    setKesAmount(convertedKes);
-    validateAmounts(val, convertedKes);
+
+    if (val && baseRate) {
+      // Logic: Determine rate tier based on potential KES
+      let potentialKes = val * (baseRate + MARKUP_HIGH_VOLUME);
+      let finalRate =
+        potentialKes < THRESHOLD_KES ? baseRate + MARKUP_LOW_VOLUME : baseRate + MARKUP_HIGH_VOLUME;
+
+      // ROUND DOWN: Use Math.floor so the state is an integer
+      const convertedKes = Math.floor(val * finalRate);
+      setKesAmount(convertedKes);
+    } else {
+      setKesAmount("");
+    }
+    validateAmounts(val);
   };
 
   const handleKesChange = (e) => {
     const val = e.target.value;
     setKesAmount(val);
-    const convertedUsd = val && rate ? (val / rate).toFixed(2) : "";
-    setUsdAmount(convertedUsd);
-    validateAmounts(convertedUsd, val);
+
+    if (val && baseRate) {
+      const activeRate = getActiveRate(val);
+      // We keep USD as a decimal for precision
+      const convertedUsd = (val / activeRate).toFixed(2);
+      setUsdAmount(convertedUsd);
+      validateAmounts(convertedUsd);
+    } else {
+      setUsdAmount("");
+    }
   };
 
-  // 2. Handle Payment Creation
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Final check before sending to backend
-    if (error || !usdAmount || !phone) {
-      return alert("Please correct the errors before proceeding.");
-    }
+    if (error || !usdAmount || !phone) return alert("Please correct the errors.");
 
     setLoading(true);
 
+    // Ensure data sent to database is rounded down
     const transactionData = {
       usd: parseFloat(usdAmount),
-      kes: parseFloat(kesAmount),
+      kes: Math.floor(parseFloat(kesAmount)),
       phone: phone,
     };
 
     try {
-      // Point this to your Node.js server URL
-      // Use "http://localhost:8080/api/create-trade" for local testing
       const response = await fetch("https://api.daze-t.com/api/create-trade", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(transactionData),
       });
 
       const data = await response.json();
-      console.log("data", data);
-
       if (response.ok && data.payment_url) {
-        // Option 1: Redirect the user immediately to OxaPay
         window.location.href = data.payment_url;
-
-        // Option 2: If you prefer staying on the page, you can set state
-        // setPaymentUrl(data.payment_url);
       } else {
         throw new Error(data.error || "Failed to initiate trade");
       }
@@ -104,6 +111,7 @@ function Home({ darkMode }) {
     new Intl.NumberFormat("en-KE", {
       style: "currency",
       currency: "KES",
+      maximumFractionDigits: 0, // Ensures the displayed formatted string has no decimals
     }).format(num);
 
   return (
@@ -118,6 +126,7 @@ function Home({ darkMode }) {
             <label>USD Amount</label>
             <input
               type="number"
+              step="any"
               value={usdAmount}
               onChange={handleUsdChange}
               placeholder={`Min $${MIN_USD}`}
@@ -125,19 +134,15 @@ function Home({ darkMode }) {
               className={`${darkMode ? "dark" : ""} ${error.includes("USD") ? "input-error" : ""}`}
             />
 
-            <label>We Pay (KES)</label>
+            <label>Amount to receive (KES)</label>
             <input
               type="number"
               value={kesAmount}
               onChange={handleKesChange}
-              placeholder={`Max ${MAX_KES} KES`}
+              placeholder="Enter amount"
               required
-              className={`${darkMode ? "dark" : ""} ${error.includes("KES") ? "input-error" : ""}`}
+              className={`${darkMode ? "dark" : ""}`}
             />
-
-            <p className={`${kesAmount && !error ? "display" : "disabled"} preview`}>
-              Total to send: <strong>{formatCurrency(kesAmount)}</strong>
-            </p>
 
             <label>M-Pesa Phone Number</label>
             <input
@@ -149,7 +154,7 @@ function Home({ darkMode }) {
               required
               className={`${darkMode ? "dark" : ""}`}
             />
-            <span className="small-text">Consider Litecoin for small payments</span>
+            <span className="small-text">Consider Litecoin for low fees</span>
 
             <input
               type="submit"
