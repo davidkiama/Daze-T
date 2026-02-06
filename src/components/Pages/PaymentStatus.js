@@ -13,7 +13,7 @@ function PaymentStatus({ darkMode }) {
 
     const pollStatus = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/check-payment?payment_id=${paymentId}`);
+        const res = await fetch(`https://api.daze-t.com/api/check-payment?payment_id=${paymentId}`);
         const data = await res.json();
         setPaymentData(data);
         setLoading(false);

@@ -35,7 +35,7 @@ function Home({ darkMode }) {
   useEffect(() => {
     const fetchCurrencies = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api/currencies");
+        const res = await fetch("https://api.daze-t.com/api/currencies");
         const data = await res.json();
         setCurrencies(data || []);
       } catch (e) {
@@ -109,7 +109,7 @@ function Home({ darkMode }) {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/api/create-trade", {
+      const response = await fetch("https://api.daze-t.com/api/create-trade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(transactionData),
@@ -184,7 +184,12 @@ function Home({ darkMode }) {
               options={currencies}
               styles={selectStyles}
               value={selectedCurrency}
-              onChange={(option) => setSelectedCurrency(option)}
+              onChange={(option) => {
+                setSelectedCurrency(option);
+                setUsdAmount("");
+                setKesAmount("");
+                setError("");
+              }}
               placeholder="Select currency"
             />
 
