@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Select from "react-select";
 
 function Home({ darkMode }) {
   const [usdAmount, setUsdAmount] = useState("");
@@ -8,6 +9,9 @@ function Home({ darkMode }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [paymentUrl, setPaymentUrl] = useState("");
+
+  const [currencies, setCurrencies] = useState([]);
+  const [selectedCurrency, setSelectedCurrency] = useState(null);
 
   const MARKUP_LOW_VOLUME = -10;
   const MARKUP_HIGH_VOLUME = -5;
@@ -25,6 +29,21 @@ function Home({ darkMode }) {
       }
     };
     fetchRate();
+  }, []);
+
+  // ================= Currencies =================
+  useEffect(() => {
+    const fetchCurrencies = async () => {
+      try {
+        const res = await fetch("http://localhost:8080/api/currencies");
+        const data = await res.json();
+        setCurrencies(data || []);
+      } catch (e) {
+        console.error("Currency load failed");
+      }
+    };
+
+    fetchCurrencies();
   }, []);
 
   const getActiveRate = (currentKes) => {
@@ -76,7 +95,8 @@ function Home({ darkMode }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (error || !usdAmount || !phone) return alert("Please correct the errors.");
+    if (error || !usdAmount || !phone || !selectedCurrency)
+      return alert("Please select currency and correct the errors.");
 
     setLoading(true);
 
@@ -85,6 +105,7 @@ function Home({ darkMode }) {
       usd: parseFloat(usdAmount),
       kes: Math.floor(parseFloat(kesAmount)),
       phone: phone,
+      currency: selectedCurrency?.value,
     };
 
     try {
@@ -98,21 +119,59 @@ function Home({ darkMode }) {
       if (response.ok && data.payment_url) {
         window.location.href = data.payment_url;
       } else {
-        throw new Error(data.error || "Failed to initiate trade");
+        setError(data.error || "Transaction failed");
       }
     } catch (err) {
       console.error("Connection Error:", err);
+      setError(err.message || "Network error");
     } finally {
       setLoading(false);
     }
   };
 
-  const formatCurrency = (num) =>
-    new Intl.NumberFormat("en-KE", {
-      style: "currency",
-      currency: "KES",
-      maximumFractionDigits: 0, // Ensures the displayed formatted string has no decimals
-    }).format(num);
+  const selectStyles = {
+    control: (base) => ({
+      ...base,
+      backgroundColor: darkMode ? "#202020" : "#f8f8f8",
+      borderColor: "#c0c0c0",
+      boxShadow: "none",
+      minHeight: "5.5rem",
+      fontSize: "2rem",
+    }),
+
+    singleValue: (base) => ({
+      ...base,
+      color: darkMode ? "#fff" : "#000",
+    }),
+
+    input: (base) => ({
+      ...base,
+      color: darkMode ? "#fff" : "#000",
+    }),
+
+    placeholder: (base) => ({
+      ...base,
+      color: darkMode ? "#aaa" : "#666",
+    }),
+
+    menu: (base) => ({
+      ...base,
+      backgroundColor: darkMode ? "#202020" : "#fff",
+    }),
+
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isFocused
+        ? darkMode
+          ? "#333"
+          : "#eee"
+        : darkMode
+          ? "#202020"
+          : "#fff",
+      color: darkMode ? "#fff" : "#000",
+      cursor: "pointer",
+    }),
+  };
 
   return (
     <main className={`${darkMode ? "dark-2" : ""} main`}>
@@ -121,7 +180,13 @@ function Home({ darkMode }) {
           <h3 className="contact__heading heading-3">Crypto To M-pesa</h3>
 
           <form onSubmit={handleSubmit}>
-            <div className={`${error ? "display" : "disabled"} validation-error`}>⚠️ {error}</div>
+            <Select
+              options={currencies}
+              styles={selectStyles}
+              value={selectedCurrency}
+              onChange={(option) => setSelectedCurrency(option)}
+              placeholder="Select currency"
+            />
 
             <label>USD Amount</label>
             <input
@@ -156,10 +221,16 @@ function Home({ darkMode }) {
             />
             <span className="small-text">Consider Litecoin for low fees</span>
 
+            {error && (
+              <div className="validation-error display" style={{ marginTop: "0.5rem" }}>
+                ⚠️ {error}
+              </div>
+            )}
+
             <input
               type="submit"
               value={loading ? "Generating Invoice..." : "Proceed to Payment"}
-              disabled={!!error || !usdAmount || loading}
+              disabled={!!error || !usdAmount || !selectedCurrency || loading}
               className={`${darkMode ? "dark" : ""} btn`}
               style={{ opacity: error || !usdAmount || loading ? 0.5 : 1 }}
             />

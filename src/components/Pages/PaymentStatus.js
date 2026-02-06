@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { QRCodeSVG } from "qrcode.react"; // Import the QR library
+import { QRCodeSVG } from "qrcode.react";
 
 function PaymentStatus({ darkMode }) {
   const { paymentId } = useParams();
@@ -10,13 +10,17 @@ function PaymentStatus({ darkMode }) {
 
   useEffect(() => {
     let intervalId;
+
     const pollStatus = async () => {
       try {
         const res = await fetch(`http://localhost:8080/api/check-payment?payment_id=${paymentId}`);
         const data = await res.json();
         setPaymentData(data);
         setLoading(false);
-        if (["finished", "failed", "expired"].includes(data.status)) clearInterval(intervalId);
+
+        if (["finished", "failed", "expired"].includes(data.status)) {
+          clearInterval(intervalId);
+        }
       } catch (err) {
         console.error("Poll error:", err);
       }
@@ -24,6 +28,7 @@ function PaymentStatus({ darkMode }) {
 
     pollStatus();
     intervalId = setInterval(pollStatus, 15000);
+
     return () => clearInterval(intervalId);
   }, [paymentId]);
 
@@ -35,22 +40,33 @@ function PaymentStatus({ darkMode }) {
 
   if (loading) return <div className="content">Loading...</div>;
 
+  const status = paymentData?.status;
+
+  // Status UI mapping
+  const statusMap = {
+    finished: { color: "#22c55e", icon: "✅" },
+    failed: { color: "#ef4444", icon: "❌" },
+    expired: { color: "#ef4444", icon: "⛔" },
+    partial_payment: { color: "#f59e0b", icon: "🟠" },
+    confirming: { color: "#3b82f6", icon: "⏳" },
+    waiting: { color: "#3b82f6", icon: "⏳" },
+  };
+
+  const currentStatus = statusMap[status] || {
+    color: "#3b82f6",
+    icon: "⏳",
+  };
+
+  const isBlinking = !["finished", "failed", "expired"].includes(status);
+
   return (
     <main className={`${darkMode ? "dark-2" : ""} main`}>
-      <div className="content">
+      <div className="content content-payment">
         <div className="card payment-card" style={{ textAlign: "center" }}>
           <h3 className="contact__heading">Payment Details</h3>
 
-          {/* QR Code Section */}
-          <div
-            style={{
-              background: "white",
-              padding: "1rem",
-              display: "inline-block",
-              borderRadius: "8px",
-              margin: "1rem 0",
-            }}
-          >
+          {/* QR Code */}
+          <div className="payment__qr-code">
             <QRCodeSVG value={paymentData?.pay_address || ""} size={180} />
           </div>
 
@@ -63,10 +79,9 @@ function PaymentStatus({ darkMode }) {
             </p>
             <small>(Approx {paymentData?.amount_kes} KES)</small>
 
-            <div className="address-container" style={{ marginTop: "1.5rem" }}>
-              <label style={{ display: "block", fontSize: "0.8rem", color: "#888" }}>
-                Address:
-              </label>
+            <div className="payment__address-container" style={{ marginTop: "1.5rem" }}>
+              <label>Address:</label>
+
               <div
                 className="copy-box"
                 onClick={() => copyToClipboard(paymentData?.pay_address)}
@@ -80,27 +95,57 @@ function PaymentStatus({ darkMode }) {
                 }}
               >
                 <code>{paymentData?.pay_address}</code>
-                <div style={{ fontSize: "0.7rem", marginTop: "5px", color: "green" }}>
+                <div className="payment__copy-address">
                   {copied ? "✅ Copied!" : "Click to copy address"}
                 </div>
               </div>
             </div>
           </div>
 
+          {/* STATUS BANNER */}
           <div
-            className={`status-banner ${paymentData?.status}`}
             style={{
               marginTop: "2rem",
               padding: "1rem",
-              borderRadius: "5px",
+              borderRadius: "6px",
               fontWeight: "bold",
-              border: "1px solid",
+              border: `2px solid ${currentStatus.color}`,
+              color: currentStatus.color,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
             }}
           >
-            Status: {paymentData?.status?.toUpperCase()}
+            <span>{currentStatus.icon}</span>
+
+            <span>{status?.toUpperCase()}</span>
+
+            {isBlinking && (
+              <span
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: "50%",
+                  background: currentStatus.color,
+                  animation: "blink 1s infinite",
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
+
+      {/* Blink animation */}
+      <style>
+        {`
+          @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+        `}
+      </style>
     </main>
   );
 }
