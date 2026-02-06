@@ -23,7 +23,7 @@ function Footer() {
         >
           <a href="https://x.com/Daze_T_official" target="_blank" rel="noopener noreferrer">
             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
-              <use xlinkHref="img/sprite.svg#twitter-svgrepo-com"></use>
+              <use xlinkHref="/img/sprite.svg#twitter-svgrepo-com"></use>
             </svg>
           </a>
           <a
@@ -32,7 +32,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
-              <use xlinkHref="img/sprite.svg#facebook-svgrepo-com"></use>
+              <use xlinkHref="/img/sprite.svg#facebook-svgrepo-com"></use>
             </svg>
           </a>
           <a
@@ -41,7 +41,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
-              <use xlinkHref="img/sprite.svg#instagram-svgrepo-com"></use>
+              <use xlinkHref="/img/sprite.svg#instagram-svgrepo-com"></use>
             </svg>
           </a>
 
@@ -51,7 +51,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <svg style={{ width: "2.5rem", height: "2.5rem", fill: "#C0C0C0" }}>
-              <use xlinkHref="img/sprite.svg#whatsapp-svgrepo-com"></use>
+              <use xlinkHref="/img/sprite.svg#whatsapp-svgrepo-com"></use>
             </svg>
           </a>
         </div>

@@ -88,7 +88,7 @@ function Home({ darkMode }) {
     };
 
     try {
-      const response = await fetch("https://api.daze-t.com/api/create-trade", {
+      const response = await fetch("http://localhost:8080/api/create-trade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(transactionData),
