@@ -77,6 +77,10 @@ function PaymentStatus({ darkMode }) {
                 {paymentData?.pay_amount} {paymentData?.pay_currency?.toUpperCase()}
               </strong>
             </p>
+
+            <small>Please send the exact amount shown to avoid delay.</small>
+            <br />
+
             <small>(Approx {paymentData?.amount_kes} KES)</small>
 
             <div className="payment__address-container" style={{ marginTop: "1.5rem" }}>

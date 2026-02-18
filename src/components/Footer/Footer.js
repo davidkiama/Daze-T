@@ -56,7 +56,7 @@ function Footer() {
           </a>
         </div>
         <p className="copyright" style={{ color: "#C0C0C0", fontSize: "1.2rem" }}>
-          &copy; {new Date().getFullYear()} CryptoMpesa. All rights reserved.
+          &copy; {new Date().getFullYear()} Daze-T. All rights reserved.
         </p>
 
         <p className="copyright" style={{ color: "#C0C0C0", fontSize: "1.2rem" }}>
