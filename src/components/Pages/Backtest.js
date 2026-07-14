@@ -21,7 +21,7 @@ function Backtest({ darkMode }) {
   useEffect(() => {
     const fetchCurrencies = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api/currency-pairs");
+        const res = await fetch("https://api.daze-t.com/api/currency-pairs");
         const data = await res.json();
         setCurrencyPairs(data || []);
       } catch (e) {
@@ -39,7 +39,7 @@ function Backtest({ darkMode }) {
 
     try {
       // Point this to your Flask backend URL
-      const response = await fetch("http://localhost:8080/api/run-backtest", {
+      const response = await fetch("https://api.daze-t.com/api/run-backtest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
