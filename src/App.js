@@ -38,7 +38,7 @@ function App() {
         <header className={`${darkMode ? "dark-header" : ""} header`}>
           <div className="logo">
             <h1 className="logo__name">
-              <Link to="/">Daze-T</Link>
+              <Link to="/">Daze-Trading</Link>
             </h1>
 
             <img
