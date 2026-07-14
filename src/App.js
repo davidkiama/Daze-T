@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 
 import Home from "./components/Pages/Home";
 import Contact from "./components/Pages/Contact";
+import Backtest from "./components/Pages/Backtest";
 import PaymentStatus from "./components/Pages/PaymentStatus";
 import Success from "./components/Success";
 
@@ -37,7 +38,7 @@ function App() {
         <header className={`${darkMode ? "dark-header" : ""} header`}>
           <div className="logo">
             <h1 className="logo__name">
-              <Link to="/">Daze-T</Link>
+              <Link to="/">Daze-Trading</Link>
             </h1>
 
             <img
@@ -63,6 +64,14 @@ function App() {
               onClick={() => setDisplayMenu(false)}
             >
               Contact
+            </NavLink>
+
+            <NavLink
+              to="/backtest"
+              className={`${darkMode ? "dark-3" : ""} nav__item`}
+              onClick={() => setDisplayMenu(false)}
+            >
+              Backtest
             </NavLink>
 
             <div className="icon icon-bg" onClick={switchTheme}>
@@ -92,6 +101,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home darkMode={darkMode} />} />
           <Route path="/contact" element={<Contact darkMode={darkMode} />} />
+          <Route path="/backtest" element={<Backtest darkMode={darkMode} />} />
           <Route path="/pay/:paymentId" element={<PaymentStatus darkMode={darkMode} />} />
           <Route path="/success" element={<Success darkMode={darkMode} />} />
         </Routes>
