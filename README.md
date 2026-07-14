@@ -17,7 +17,7 @@ This frontend connects to the Daze-T Flask backend API.
 # 🔗 Related Project (Backend API)
 
 👉 Backend Repository:  
-https://github.com/davidkiama/Daze-T-API
+https://github.com/davidkiama/api-py-daze-t
 
 The backend handles:
 
