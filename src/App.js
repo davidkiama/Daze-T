@@ -51,11 +51,19 @@ function App() {
 
           <nav className={`${displayMenu ? "display_menu" : ""}   nav`}>
             <NavLink
+              to="/backtest"
+              className={`${darkMode ? "dark-3" : ""} nav__item`}
+              onClick={() => setDisplayMenu(false)}
+            >
+              Backtest
+            </NavLink>
+
+            <NavLink
               to="/"
               className={`${darkMode ? "dark-3" : ""} nav__item`}
               onClick={() => setDisplayMenu(false)}
             >
-              About
+              Sell Crypto
             </NavLink>
 
             <NavLink
@@ -64,14 +72,6 @@ function App() {
               onClick={() => setDisplayMenu(false)}
             >
               Contact
-            </NavLink>
-
-            <NavLink
-              to="/backtest"
-              className={`${darkMode ? "dark-3" : ""} nav__item`}
-              onClick={() => setDisplayMenu(false)}
-            >
-              Backtest
             </NavLink>
 
             <div className="icon icon-bg" onClick={switchTheme}>

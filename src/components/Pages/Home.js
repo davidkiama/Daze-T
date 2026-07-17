@@ -130,13 +130,22 @@ function Home({ darkMode }) {
   };
 
   const selectStyles = {
-    control: (base) => ({
+    control: (base, state) => ({
       ...base,
       backgroundColor: darkMode ? "#202020" : "#f8f8f8",
-      borderColor: "#c0c0c0",
+      // Change border to green when focused
+      borderColor: state.isFocused ? "green" : "#c0c0c0",
+      borderWidth: "2px",
+      borderRight: "none",
+      borderBottom: "none",
+      // React-select uses box-shadow for its default blue focus outline, so we remove it
       boxShadow: "none",
       minHeight: "5.5rem",
       fontSize: "2rem",
+      // Prevent the default hover effect from overriding your green border
+      "&:hover": {
+        borderColor: state.isFocused ? "green" : "#a0a0a0",
+      },
     }),
 
     singleValue: (base) => ({
