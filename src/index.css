@@ -363,6 +363,11 @@ form textarea {
   font-size: 1.8rem;
 }
 
+form :is(input, select, textarea):focus {
+  outline: none;
+  border-color: green;
+}
+
 .btn,
 form .btn {
   cursor: pointer;
