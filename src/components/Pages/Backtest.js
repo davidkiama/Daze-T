@@ -69,7 +69,7 @@ function Backtest({ darkMode }) {
   const selectStyles = {
     control: (base, state) => ({
       ...base,
-      backgroundColor: darkMode ? "#202020" : "#f8f8f8",
+      backgroundColor: darkMode ? "#202020" : "#cccccc",
       // Change border to green when focused
       borderColor: "green",
       borderWidth: "2px",
@@ -87,12 +87,12 @@ function Backtest({ darkMode }) {
 
     singleValue: (base) => ({
       ...base,
-      color: darkMode ? "#fff" : "#000",
+      color: darkMode ? "#cccccc" : "#000",
     }),
 
     input: (base) => ({
       ...base,
-      color: darkMode ? "#fff" : "#000",
+      color: darkMode ? "#cccccc" : "#000",
     }),
 
     placeholder: (base) => ({
@@ -102,7 +102,7 @@ function Backtest({ darkMode }) {
 
     menu: (base) => ({
       ...base,
-      backgroundColor: darkMode ? "#202020" : "#fff",
+      backgroundColor: darkMode ? "#202020" : "#cccccc",
     }),
 
     option: (base, state) => ({
@@ -113,8 +113,8 @@ function Backtest({ darkMode }) {
           : "#eee"
         : darkMode
           ? "#202020"
-          : "#fff",
-      color: darkMode ? "#fff" : "#000",
+          : "#cccccc",
+      color: darkMode ? "#cccccc" : "#000",
       cursor: "pointer",
     }),
   };
