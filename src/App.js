@@ -10,6 +10,8 @@ import Backtest from "./components/Pages/Backtest";
 import PaymentStatus from "./components/Pages/PaymentStatus";
 import Success from "./components/Success";
 
+import SVGComponent from "./components/logo";
+
 function App() {
   const [displayMenu, setDisplayMenu] = useState(false);
   const dark = localStorage.getItem("dark");
@@ -38,33 +40,28 @@ function App() {
         <header className={`${darkMode ? "dark-header" : ""} header`}>
           <div className="logo">
             <h1 className="logo__name">
-              <Link to="/">Daze-Trading</Link>
+              <Link to="/">
+                <SVGComponent />
+              </Link>
             </h1>
-
-            <img
-              src="/img/ethereum.svg"
-              alt="Crypto Logo"
-              className="logo__img"
-              style={{ height: "4.2rem", marginLeft: "1rem" }}
-            />
           </div>
 
           <nav className={`${displayMenu ? "display_menu" : ""}   nav`}>
             <NavLink
-              to="/backtest"
+              to="/"
               className={`${darkMode ? "dark-3" : ""} nav__item`}
               onClick={() => setDisplayMenu(false)}
             >
               Backtest
             </NavLink>
 
-            <NavLink
+            {/* <NavLink
               to="/"
               className={`${darkMode ? "dark-3" : ""} nav__item`}
               onClick={() => setDisplayMenu(false)}
             >
               Sell Crypto
-            </NavLink>
+            </NavLink> */}
 
             <NavLink
               to="/contact"
@@ -99,7 +96,7 @@ function App() {
         </header>
 
         <Routes>
-          <Route path="/" exact element={<Home darkMode={darkMode} />} />
+          <Route path="/" exact element={<Backtest darkMode={darkMode} />} />
           <Route path="/contact" element={<Contact darkMode={darkMode} />} />
           <Route path="/backtest" element={<Backtest darkMode={darkMode} />} />
           <Route path="/pay/:paymentId" element={<PaymentStatus darkMode={darkMode} />} />
