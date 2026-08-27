@@ -38,12 +38,23 @@ function App() {
     <BrowserRouter>
       <div id="container" className={`${darkMode ? "dark" : ""} `}>
         <header className={`${darkMode ? "dark-header" : ""} header`}>
-          <div className="logo">
+          {/* <div className="logo">
             <h1 className="logo__name">
               <Link to="/">
                 <SVGComponent />
               </Link>
             </h1>
+          </div> */}
+          <div className="logo">
+            <h1 className="logo__name">
+              <Link to="/">Daze Trading</Link>
+            </h1>
+
+            <img src="img/code.png" alt="Logo Img" className="logo__img" />
+
+            {/* <svg className="icon--computer" style={styles.headerIcons}>
+              <use xlinkHref="img/sprite.svg#computer-svgrepo-com"></use>
+            </svg> */}
           </div>
 
           <nav className={`${displayMenu ? "display_menu" : ""}   nav`}>

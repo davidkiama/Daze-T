@@ -63,7 +63,7 @@ body {
   box-shadow: 1px 5px 20px -6px rgba(0, 0, 0, 0.75);
 }
 .card__heading {
-  border-bottom: 5px solid #c0c0c0;
+  border-bottom: 5px solid green;
 }
 .card__content {
   margin-top: 1rem;
@@ -90,13 +90,15 @@ body {
 }
 .card a {
   text-decoration: none;
-  background-image: linear-gradient(to right, #c0c0c0, #808080);
+  /* background-image: linear-gradient(to right, #c0c0c0, #808080); */
+  background-image: linear-gradient(to right, green, green);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 .card a:hover {
-  background-image: linear-gradient(to right, #ffd700, #daa520);
+  /* background-image: linear-gradient(to right, #ffd700, #daa520); */
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
 }
 
 .con {
@@ -245,17 +247,14 @@ body {
   margin-left: 1rem;
 }
 
-.logo__name svg {
-  font-size: 4rem;
-  height: 10rem;
-  padding: 1rem;
-  padding-top: 1.2rem;
-  width: fit-content;
-  /* width: 4rem; */
-}
 .logo__name a {
   text-decoration: none;
   color: inherit;
+}
+
+.logo__img {
+  height: 4.2rem;
+  margin-left: 1rem;
 }
 
 .nav {
@@ -277,11 +276,13 @@ body {
   bottom: 0;
   width: 80%;
   margin: 0 10%;
-  border-bottom: 2px solid #c0c0c0;
+  /* border-bottom: 2px solid #c0c0c0; */
+  border-bottom: 2px solid green;
 }
 
 .nav__item.active {
-  background-image: linear-gradient(to right, #c0c0c0, #808080);
+  /* background-image: linear-gradient(to right, #c0c0c0, #808080); */
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -359,8 +360,9 @@ form textarea {
   margin-bottom: 1.5rem;
   padding: 2rem 1rem;
   width: 100%;
-  border: 2px solid #c0c0c0;
-  background-color: #f8f8f8;
+  /* border: 2px solid #c0c0c0; */
+  border: 2px solid green;
+  background-color: #cccccc;
   border-right: none;
   border-bottom: none;
   font-size: 1.8rem;
@@ -381,7 +383,8 @@ form .btn {
   margin-top: 2rem;
   font-size: 2rem;
   padding: 1.2rem 2.5rem;
-  background-color: #c0c0c0;
+  /* background-color: #c0c0c0; */
+  background-color: #9be15d;
   color: #000;
   font-weight: bold;
   border-radius: 5px;
@@ -390,7 +393,8 @@ form .btn {
 
 .btn:hover,
 form .btn:hover {
-  background-color: #ffd700;
+  /* background-color: #ffd700; */
+  background-color: #39b385;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -421,7 +425,7 @@ form .btn:hover {
 }
 
 .review-section textarea {
-  border: 1px solid #c0c0c0 !important;
+  /* border: 1px solid #c0c0c0 !important; */
   background: #fff !important;
 }
 
@@ -564,6 +568,142 @@ form .btn:hover {
 }
 .preview.display {
   opacity: 1;
+}
+
+@media only screen and (min-width: 100em) {
+  .clock {
+    width: 42rem;
+    height: 30rem;
+  }
+}
+
+.dark-header {
+  background-color: rgba(33, 33, 33, 0.95);
+}
+
+.dark {
+  background-color: #202020;
+  color: white;
+}
+
+.dark-2 {
+  background-color: #181818;
+}
+
+.dark-3 {
+  color: #e6e6e6;
+}
+
+/* --- */
+/* NEW STYLES FOR EDUCATION SECTION */
+/* --- */
+
+.education-section {
+  width: 80%; /* Give it a wider width to look good */
+
+  margin: 3rem auto;
+  /* Match card shadow, but can be adjusted */
+  box-shadow: 1px 5px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+@media only screen and (max-width: 62.5em) {
+  /* Adjust for smaller screens */
+  .education-section {
+    width: 60rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  /* Adjust for mobile screens */
+  .education-section {
+    width: 100%;
+    padding: 0 1rem; /* Add some padding on mobile */
+    box-shadow: none; /* Remove shadow on mobile for a cleaner look */
+  }
+}
+
+.accordion-item {
+  border-bottom: 1px solid #444; /* Separator for items */
+  overflow: hidden; /* Important for the content transition */
+}
+
+.accordion-item:last-child {
+  border-bottom: none; /* No separator for the last item */
+}
+
+.accordion-header {
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+  background-color: #ccccccbf; /* Slightly lighter on hover */
+}
+
+.accordion-header h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.accordion-toggle {
+  font-size: 3rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+
+/* Accordion Content Styling */
+.accordion-content {
+  max-height: 0; /* Hidden by default */
+  padding: 0 2rem; /* Initial padding is 0 */
+  transition:
+    max-height 0.4s ease-out,
+    padding 0.4s ease-out;
+}
+
+.accordion-content.open {
+  max-height: 50rem; /* A large enough value to allow full content display */
+  padding: 2rem;
+}
+
+.accordion-content p {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.accordion-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark Mode Overrides (for when darkMode is false, but elements inherit 'dark' or 'dark-2' classes) */
+.accordion-header.dark {
+  background-color: #202020; /* Use your existing dark background */
+  color: #e6e6e6; /* Use your existing light text color */
+}
+
+.accordion-header.dark:hover {
+  background-color: #333;
+}
+
+.education-section.dark-3 {
+  color: #e6e6e6; /* Ensure text in content is readable in dark mode */
+  box-shadow: 1px 5px 20px -6px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
+}
+
+@media only screen and (min-width: 100em) {
+  .content-home .card {
+    width: 100rem;
+  }
+}
+
+.live-links {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
 }
 
 @media only screen and (min-width: 100em) {

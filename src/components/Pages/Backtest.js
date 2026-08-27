@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
+import EducationSection from "./EducationSection";
 
 function Backtest({ darkMode }) {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ function Backtest({ darkMode }) {
       ...base,
       backgroundColor: darkMode ? "#202020" : "#f8f8f8",
       // Change border to green when focused
-      borderColor: state.isFocused ? "green" : "#c0c0c0",
+      borderColor: "green",
       borderWidth: "2px",
       borderRight: "none",
       borderBottom: "none",
@@ -80,7 +81,7 @@ function Backtest({ darkMode }) {
       fontSize: "2rem",
       // Prevent the default hover effect from overriding your green border
       "&:hover": {
-        borderColor: state.isFocused ? "green" : "#a0a0a0",
+        borderColor: "green",
       },
     }),
 
@@ -185,6 +186,10 @@ function Backtest({ darkMode }) {
           </div>
         )}
       </div>
+
+      <section className="content content-education">
+        <EducationSection />
+      </section>
     </main>
   );
 }
