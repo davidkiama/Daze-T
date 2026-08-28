@@ -66,13 +66,13 @@ function App() {
               Backtest
             </NavLink>
 
-            {/* <NavLink
-              to="/"
+            <NavLink
+              to="/sellcrypto"
               className={`${darkMode ? "dark-3" : ""} nav__item`}
               onClick={() => setDisplayMenu(false)}
             >
               Sell Crypto
-            </NavLink> */}
+            </NavLink>
 
             <NavLink
               to="/contact"
@@ -108,8 +108,9 @@ function App() {
 
         <Routes>
           <Route path="/" exact element={<Backtest darkMode={darkMode} />} />
+          <Route path="/sellcrypto" exact element={<Home darkMode={darkMode} />} />
           <Route path="/contact" element={<Contact darkMode={darkMode} />} />
-          <Route path="/backtest" element={<Backtest darkMode={darkMode} />} />
+          {/* <Route path="/backtest" element={<Backtest darkMode={darkMode} />} /> */}
           <Route path="/pay/:paymentId" element={<PaymentStatus darkMode={darkMode} />} />
           <Route path="/success" element={<Success darkMode={darkMode} />} />
         </Routes>

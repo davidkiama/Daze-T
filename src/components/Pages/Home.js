@@ -134,7 +134,7 @@ function Home({ darkMode }) {
       ...base,
       backgroundColor: darkMode ? "#202020" : "#f8f8f8",
       // Change border to green when focused
-      borderColor: state.isFocused ? "green" : "#c0c0c0",
+      borderColor: "green",
       borderWidth: "2px",
       borderRight: "none",
       borderBottom: "none",
@@ -144,18 +144,18 @@ function Home({ darkMode }) {
       fontSize: "2rem",
       // Prevent the default hover effect from overriding your green border
       "&:hover": {
-        borderColor: state.isFocused ? "green" : "#a0a0a0",
+        borderColor: "green",
       },
     }),
 
     singleValue: (base) => ({
       ...base,
-      color: darkMode ? "#fff" : "#000",
+      color: darkMode ? "#ccc" : "#000",
     }),
 
     input: (base) => ({
       ...base,
-      color: darkMode ? "#fff" : "#000",
+      color: darkMode ? "#ccc" : "#000",
     }),
 
     placeholder: (base) => ({
@@ -165,7 +165,7 @@ function Home({ darkMode }) {
 
     menu: (base) => ({
       ...base,
-      backgroundColor: darkMode ? "#202020" : "#fff",
+      backgroundColor: darkMode ? "#202020" : "#ccc",
     }),
 
     option: (base, state) => ({
@@ -176,8 +176,8 @@ function Home({ darkMode }) {
           : "#eee"
         : darkMode
           ? "#202020"
-          : "#fff",
-      color: darkMode ? "#fff" : "#000",
+          : "#ccc",
+      color: darkMode ? "#ccc" : "#000",
       cursor: "pointer",
     }),
   };
