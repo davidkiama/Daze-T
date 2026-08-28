@@ -132,7 +132,7 @@ function Home({ darkMode }) {
   const selectStyles = {
     control: (base, state) => ({
       ...base,
-      backgroundColor: darkMode ? "#202020" : "#f8f8f8",
+      backgroundColor: darkMode ? "#202020" : "#ccc",
       // Change border to green when focused
       borderColor: "green",
       borderWidth: "2px",
